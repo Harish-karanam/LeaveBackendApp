@@ -12,7 +12,7 @@ import com.example.demo.dto.request.RoleRequestDto;
 import com.example.demo.dto.response.RoleResponseDto;
 
 import com.example.demo.entity.Role;
-
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.RoleMapper;
 
 import com.example.demo.repository.RoleRepository;
@@ -45,7 +45,9 @@ public class RoleService {
     public RoleResponseDto getRoleById(Long id) {
 
         Role role = roleRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Role not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Role not found"));
 
         return roleMapper.toResponseDto(role);
     }

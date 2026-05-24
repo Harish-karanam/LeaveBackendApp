@@ -13,7 +13,8 @@ import com.example.demo.dto.request.UserRequestDto;
 import com.example.demo.dto.response.UserResponseDto;
 
 import com.example.demo.entity.*;
-
+import com.example.demo.exception.DuplicateResourceException;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.UserMapper;
 
 import com.example.demo.repository.*;
@@ -37,23 +38,31 @@ public class UserService {
     public UserResponseDto createUser(UserRequestDto dto) {
 
         if (userRepository.existsByEmail(dto.getEmail())) {
-            throw new RuntimeException("Email already exists");
+        	throw new DuplicateResourceException(
+        	        "Email already exists");
         }
 
         if (userRepository.existsByEmployeeCode(dto.getEmployeeCode())) {
-            throw new RuntimeException("Employee code already exists");
+        	throw new DuplicateResourceException(
+        	        "Email already exists");
         }
 
         User user = userMapper.toEntity(dto);
 
         Role role = roleRepository.findById(dto.getRoleId())
-                .orElseThrow(() -> new RuntimeException("Role not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Role not found"));
 
         Department department = departmentRepository.findById(dto.getDepartmentId())
-                .orElseThrow(() -> new RuntimeException("Department not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Department not found"));
 
         Project project = projectRepository.findById(dto.getProjectId())
-                .orElseThrow(() -> new RuntimeException("Project not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Project not found"));
 
         user.setRole(role);
         user.setDepartment(department);
@@ -62,7 +71,9 @@ public class UserService {
         if (dto.getManagerId() != null) {
 
             User manager = userRepository.findById(dto.getManagerId())
-                    .orElseThrow(() -> new RuntimeException("Manager not found"));
+            		.orElseThrow(() ->
+                    new ResourceNotFoundException(
+                            "Manager not found"));
 
             user.setManager(manager);
         }
@@ -77,7 +88,9 @@ public class UserService {
     public UserResponseDto getUserById(Long id) {
 
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "User not found"));
 
         return userMapper.toResponseDto(user);
     }

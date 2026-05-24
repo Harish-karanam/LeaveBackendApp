@@ -12,7 +12,7 @@ import com.example.demo.dto.request.ProjectRequestDto;
 import com.example.demo.dto.response.ProjectResponseDto;
 
 import com.example.demo.entity.Project;
-
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.ProjectMapper;
 
 import com.example.demo.repository.ProjectRepository;
@@ -45,7 +45,9 @@ public class ProjectService {
     public ProjectResponseDto getProjectById(Long id) {
 
         Project project = projectRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Project not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Project not found"));
 
         return projectMapper.toResponseDto(project);
     }

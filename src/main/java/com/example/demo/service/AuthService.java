@@ -3,7 +3,7 @@ package com.example.demo.service;
 
 
 import org.springframework.security.authentication.AuthenticationManager;
-
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 import com.example.demo.dto.request.LoginRequestDto;
 
 import com.example.demo.dto.response.LoginResponseDto;
-
+import com.example.demo.exception.UnauthorizedException;
 import com.example.demo.security.CustomUserDetailsService;
 
 import com.example.demo.security.JwtService;
@@ -35,15 +35,23 @@ public class AuthService {
     public LoginResponseDto login(
             LoginRequestDto dto) {
 
-        authenticationManager.authenticate(
+        try {
 
-                new UsernamePasswordAuthenticationToken(
+            authenticationManager.authenticate(
 
-                        dto.getEmail(),
+                    new UsernamePasswordAuthenticationToken(
 
-                        dto.getPassword()
-                )
-        );
+                            dto.getEmail(),
+
+                            dto.getPassword()
+                    )
+            );
+
+        } catch (BadCredentialsException ex) {
+
+            throw new UnauthorizedException(
+                    "Invalid email or password");
+        }
 
         UserDetails userDetails =
 

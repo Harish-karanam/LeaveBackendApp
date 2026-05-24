@@ -18,7 +18,7 @@ import com.example.demo.entity.LeaveType;
 import com.example.demo.entity.User;
 
 import com.example.demo.enums.LeaveStatus;
-
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.LeaveRequestMapper;
 
 import com.example.demo.repository.LeaveRequestRepository;
@@ -41,10 +41,14 @@ public class LeaveRequestService {
             LeaveRequestDto dto) {
 
         User user = userRepository.findById(dto.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "User not found"));
 
         LeaveType leaveType = leaveTypeRepository.findById(dto.getLeaveTypeId())
-                .orElseThrow(() -> new RuntimeException("Leave type not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Leave type not found"));
 
         LeaveRequest leaveRequest =
                 leaveRequestMapper.toEntity(dto);
@@ -89,8 +93,9 @@ public class LeaveRequestService {
 
         LeaveRequest leaveRequest =
                 leaveRequestRepository.findById(leaveId)
-                        .orElseThrow(() ->
-                                new RuntimeException("Leave not found"));
+                .orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Leave not found"));
 
         leaveRequest.setStatus(
         	    LeaveStatus.valueOf(dto.getStatus().toUpperCase())

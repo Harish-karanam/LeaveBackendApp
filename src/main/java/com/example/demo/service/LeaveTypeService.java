@@ -12,7 +12,7 @@ import com.example.demo.dto.request.LeaveTypeRequestDto;
 import com.example.demo.dto.response.LeaveTypeResponseDto;
 
 import com.example.demo.entity.LeaveType;
-
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.LeaveTypeMapper;
 
 import com.example.demo.repository.LeaveTypeRepository;
@@ -47,7 +47,9 @@ public class LeaveTypeService {
     public LeaveTypeResponseDto getLeaveTypeById(Long id) {
 
         LeaveType leaveType = leaveTypeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Leave type not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Leave type not found"));
 
         return leaveTypeMapper.toResponseDto(leaveType);
     }

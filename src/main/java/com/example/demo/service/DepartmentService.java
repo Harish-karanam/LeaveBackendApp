@@ -12,7 +12,7 @@ import com.example.demo.dto.request.DepartmentRequestDto;
 import com.example.demo.dto.response.DepartmentResponseDto;
 
 import com.example.demo.entity.Department;
-
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.DepartmentMapper;
 
 import com.example.demo.repository.DepartmentRepository;
@@ -48,7 +48,9 @@ public class DepartmentService {
     public DepartmentResponseDto getDepartmentById(Long id) {
 
         Department department = departmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Department not found"));
+        		.orElseThrow(() ->
+                new ResourceNotFoundException(
+                        "Department not found"));
 
         return departmentMapper.toResponseDto(department);
     }

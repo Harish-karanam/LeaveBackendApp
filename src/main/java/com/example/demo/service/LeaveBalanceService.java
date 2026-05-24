@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
 import com.example.demo.dto.response.LeaveBalanceResponseDto;
-
+import com.example.demo.exception.InvalidRequestException;
 import com.example.demo.mapper.LeaveBalanceMapper;
 
 import com.example.demo.repository.LeaveBalanceRepository;
@@ -35,6 +35,7 @@ public class LeaveBalanceService {
         return leaveBalanceRepository.findById(id)
                 .map(leaveBalanceMapper::toResponseDto)
                 .orElseThrow(() ->
-                        new RuntimeException("Balance not found"));
+                new InvalidRequestException(
+                        "Balnce not found"));
     }
 }
