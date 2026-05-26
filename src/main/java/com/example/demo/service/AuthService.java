@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
 import com.example.demo.dto.request.LoginRequestDto;
-
+import com.example.demo.dto.request.UserRequestDto;
 import com.example.demo.dto.response.LoginResponseDto;
+import com.example.demo.dto.response.UserResponseDto;
 import com.example.demo.exception.UnauthorizedException;
 import com.example.demo.security.CustomUserDetailsService;
 
@@ -23,12 +24,20 @@ import com.example.demo.security.JwtService;
 @Service
 @RequiredArgsConstructor
 public class AuthService {
+	private final UserService userservice;
 
     private final AuthenticationManager
             authenticationManager;
 
     private final CustomUserDetailsService
             userDetailsService;
+    
+    //register
+    public UserResponseDto register(
+            UserRequestDto dto) {
+
+        return userservice.createUser(dto);
+    }
 
     private final JwtService jwtService;
 

@@ -3,3 +3,94 @@ http://localhost:8080/swagger-ui/index.html
 
 OpenAPI Docs:
 http://localhost:8080/v3/api-docs
+
+
+ROLES -->DEPT --> PROJECT --> LEAVE TYPE --->USER(REGISTER) -->LEAVEBALANCE -->HOLIDAYCALENDAR
+
+DB TO CREATE 
+
+ROLES :
+-- roles--
+insert INTO roles(role_name) 
+values ('ADMIN'),('HR'),('MANAGER'),('EMPLOYEE');
+select * from roles;
+
+DEPT :
+-- dEPARTMENTS--
+
+INSERT INTO departments(department_name)
+values('IT'),('HR'),('Finance'),('Testing');
+select * from departments;
+
+PROJECTS :
+-- Projects--
+
+INSERT INTO projects(project_name, calendar_type, weekend_config)
+values('Banking Project', 'INDIA','SAT_SUN'),
+('HealthCare Project','USA','SAT_SUN'),
+('Zatca Project','Dubai','FRI_SUN');
+select * from projects;
+
+LEAVE_TYPES
+-- LEAVE TYPES--
+
+INSERT INTO leave_types(name,max_days,carry_forward,requires_document)
+values('SICK_LEAVE',12,TRUE,TRUE),
+('CASUAL_LEAVE',10,FALSE,FALSE),
+('EARNED_LEAVE',20,TRUE,FALSE),
+('MATERNITY_LEAVE',180,FALSE,TRUE),
+('LOP',365,FALSE,FALSE);
+
+
+CREATE ADMIN AUTH
+{
+  "employeeCode": "EMP001",
+  "firstName": "Harish",
+  "lastName": "Admin",
+  "email": "admin@gmail.com",
+  "password": "admin123",
+  "roleId": 1,
+  "departmentId": 1,
+  "projectId": 1,
+  "joiningDate": "2026-05-26"
+}
+
+CREATE HR
+{
+  "employeeCode": "EMP002",
+  "firstName": "Priya",
+  "lastName": "HR",
+  "email": "hr@gmail.com",
+  "password": "hr12345",
+  "roleId": 2,
+  "departmentId": 2,
+  "projectId": 1,
+  "joiningDate": "2026-05-26"
+}
+
+CREATE MANAGER
+{
+  "employeeCode": "EMP003",
+  "firstName": "Rahul",
+  "lastName": "Manager",
+  "email": "manager@gmail.com",
+  "password": "manager123",
+  "roleId": 3,
+  "departmentId": 1,
+  "projectId": 1,
+  "joiningDate": "2026-05-26"
+}
+
+CREATE EMPLOYEE
+{
+  "employeeCode": "EMP004",
+  "firstName": "DAVIDWARNER",
+  "lastName": "Employee",
+  "email": "DAVID@gmail.com",
+  "password": "DAVID123",
+  "roleId": 4,
+  "managerId": 3,
+  "departmentId": 1,
+  "projectId": 1,
+  "joiningDate": "2026-05-26"
+}

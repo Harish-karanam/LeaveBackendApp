@@ -7,11 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entity.HolidayCalendar;
 
-public interface HolidayCalendarRepository
-extends JpaRepository<HolidayCalendar, Long>{
+public interface HolidayCalendarRepository extends JpaRepository<HolidayCalendar, Long>{
 
-    boolean existsByHolidayDate(
-            LocalDate holidayDate);
+    boolean existsByHolidayDate(LocalDate holidayDate);
 
     List<HolidayCalendar>
     findByHolidayDateBetween(

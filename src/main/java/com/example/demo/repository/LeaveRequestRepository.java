@@ -11,8 +11,7 @@ import com.example.demo.entity.LeaveRequest;
 import com.example.demo.enums.LeaveStatus;
 
 @Repository
-public interface LeaveRequestRepository
-        extends JpaRepository<LeaveRequest, Long> {
+public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long> {
 
     List<LeaveRequest> findByUserId(Long userId);
 

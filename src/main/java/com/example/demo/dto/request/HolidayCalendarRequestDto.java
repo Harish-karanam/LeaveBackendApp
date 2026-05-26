@@ -1,9 +1,7 @@
 package com.example.demo.dto.request;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-import com.example.demo.entity.User;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;

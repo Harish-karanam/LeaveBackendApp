@@ -53,11 +53,20 @@ public class User {
     @ManyToOne
     @JoinColumn(name="project_id")
     private Project project;
+    
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
     @Column(name="created_at")
     private LocalDateTime createdAt;
+    
+    @PrePersist
+    public void prePersist() {
+    	this.createdAt=LocalDateTime.now();
+    	if(this.status==null) {
+    		this.status=UserStatus.ACTIVE;
+    	}
+    }
     
     private LocalDate joiningDate;
 }

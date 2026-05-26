@@ -1,8 +1,6 @@
 package com.example.demo.dto.request;
 
-import java.time.LocalDateTime;
 
-import com.example.demo.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
