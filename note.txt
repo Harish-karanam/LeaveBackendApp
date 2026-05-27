@@ -12,6 +12,7 @@ ROLES -->DEPT --> PROJECT --> LEAVE TYPE --->USER(REGISTER) -->LEAVEBALANCE -->H
 DB TO CREATE 
 
 ROLES :
+
 -- roles--
 insert INTO roles(role_name) 
 values ('ADMIN'),('HR'),('MANAGER'),('EMPLOYEE');
@@ -69,6 +70,7 @@ CREATE HR
   "projectId": 1,
   "joiningDate": "2026-05-26"
 }
+abcds
 
 CREATE MANAGER
 {
@@ -112,26 +114,27 @@ CREATE EMPLOYEE
 
 Database holidays 
 
-INSERT INTO holiday_calendar (
+INSERT INTO holiday_calendar
+(
     holiday_name,
     holiday_date,
     type,
     project_id
 )
 VALUES
-('New Year', '2026-01-01', 'PUBLIC_HOLIDAY', NULL),
-('Pongal', '2026-01-15', 'FESTIVAL', NULL),
-('Republic Day', '2026-01-26', 'NATIONAL_HOLIDAY', NULL),
-('Holi', '2026-03-03', 'FESTIVAL', NULL),
-('Ugadi', '2026-03-19', 'FESTIVAL', NULL),
-('Labour Day', '2026-05-01', 'PUBLIC_HOLIDAY', NULL),
-('Telangana Formation Day', '2026-06-02', 'STATE_HOLIDAY', NULL),
-('Independence Day', '2026-08-15', 'NATIONAL_HOLIDAY', NULL),
-('Ganesh Chaturthi', '2026-09-14', 'FESTIVAL', NULL),
-('Gandhi Jayanthi', '2026-10-02', 'NATIONAL_HOLIDAY', NULL),
-('Dussehra', '2026-10-20', 'FESTIVAL', NULL),
-('Diwali', '2026-11-09', 'FESTIVAL', NULL),
-('Christmas', '2026-12-25', 'PUBLIC_HOLIDAY', NULL);
+('New Year', '2026-01-01', 'ORG', NULL),
+('Pongal', '2026-01-15', 'ORG', NULL),
+('Republic Day', '2026-01-26', 'ORG', NULL),
+('Holi', '2026-03-03', 'ORG', NULL),
+('Ugadi', '2026-03-19', 'ORG', NULL),
+('Labour Day', '2026-05-01', 'ORG', NULL),
+('Telangana Formation Day', '2026-06-02', 'ORG', NULL),
+('Independence Day', '2026-08-15', 'ORG', NULL),
+('Ganesh Chaturthi', '2026-09-14', 'ORG', NULL),
+('Gandhi Jayanthi', '2026-10-02', 'ORG', NULL),
+('Dussehra', '2026-10-20', 'ORG', NULL),
+('Diwali', '2026-11-09', 'ORG', NULL),
+('Christmas', '2026-12-25', 'ORG', NULL);
 
 
 
@@ -170,66 +173,70 @@ select * from users;
 select * from departments;
 select * from projects;
 
-INSERT INTO holiday_calendar (
+INSERT INTO holiday_calendar
+(
     holiday_name,
     holiday_date,
     type,
     project_id
 )
 VALUES
-('New Year', '2026-01-01', 'PUBLIC_HOLIDAY', NULL),
-('Pongal', '2026-01-15', 'FESTIVAL', NULL),
-('Republic Day', '2026-01-26', 'NATIONAL_HOLIDAY', NULL),
-('Holi', '2026-03-03', 'FESTIVAL', NULL),
-('Ugadi', '2026-03-19', 'FESTIVAL', NULL),
-('Labour Day', '2026-05-01', 'PUBLIC_HOLIDAY', NULL),
-('Telangana Formation Day', '2026-06-02', 'STATE_HOLIDAY', NULL),
-('Independence Day', '2026-08-15', 'NATIONAL_HOLIDAY', NULL),
-('Ganesh Chaturthi', '2026-09-14', 'FESTIVAL', NULL),
-('Gandhi Jayanthi', '2026-10-02', 'NATIONAL_HOLIDAY', NULL),
-('Dussehra', '2026-10-20', 'FESTIVAL', NULL),
-('Diwali', '2026-11-09', 'FESTIVAL', NULL),
-('Christmas', '2026-12-25', 'PUBLIC_HOLIDAY', NULL);
+('New Year', '2026-01-01', 'ORG', NULL),
+('Pongal', '2026-01-15', 'ORG', NULL),
+('Republic Day', '2026-01-26', 'ORG', NULL),
+('Holi', '2026-03-03', 'ORG', NULL),
+('Ugadi', '2026-03-19', 'ORG', NULL),
+('Labour Day', '2026-05-01', 'ORG', NULL),
+('Telangana Formation Day', '2026-06-02', 'ORG', NULL),
+('Independence Day', '2026-08-15', 'ORG', NULL),
+('Ganesh Chaturthi', '2026-09-14', 'ORG', NULL),
+('Gandhi Jayanthi', '2026-10-02', 'ORG', NULL),
+('Dussehra', '2026-10-20', 'ORG', NULL),
+('Diwali', '2026-11-09', 'ORG', NULL),
+('Christmas', '2026-12-25', 'ORG', NULL);
 
 -- project holiday for usa ------
-INSERT INTO holiday_calendar (
+INSERT INTO holiday_calendar
+(
     holiday_name,
     holiday_date,
     type,
     project_id
 )
 VALUES
-('New Year''s Day', '2026-01-01', 'PROJECT_HOLIDAY', 2),
-('Martin Luther King Jr. Day', '2026-01-19', 'PROJECT_HOLIDAY', 2),
-('Memorial Day', '2026-05-25', 'PROJECT_HOLIDAY', 2),
-('Independence Day (Observed)', '2026-07-03', 'PROJECT_HOLIDAY', 2),
-('Labor Day', '2026-09-07', 'PROJECT_HOLIDAY', 2),
-('Columbus Day', '2026-10-12', 'PROJECT_HOLIDAY', 2),
-('Veterans Day', '2026-11-11', 'PROJECT_HOLIDAY', 2),
-('Thanksgiving Day', '2026-11-26', 'PROJECT_HOLIDAY', 2),
-('Day After Thanksgiving', '2026-11-27', 'PROJECT_HOLIDAY', 2),
-('Christmas Eve', '2026-12-24', 'PROJECT_HOLIDAY', 2),
-('Christmas Day', '2026-12-25', 'PROJECT_HOLIDAY', 2);
+('New Year''s Day', '2026-01-01', 'PROJECT', 2),
+('Martin Luther King Jr. Day', '2026-01-19', 'PROJECT', 2),
+('Memorial Day', '2026-05-25', 'PROJECT', 2),
+('Independence Day (Observed)', '2026-07-03', 'PROJECT', 2),
+('Labor Day', '2026-09-07', 'PROJECT', 2),
+('Columbus Day', '2026-10-12', 'PROJECT', 2),
+('Veterans Day', '2026-11-11', 'PROJECT', 2),
+('Thanksgiving Day', '2026-11-26', 'PROJECT', 2),
+('Day After Thanksgiving', '2026-11-27', 'PROJECT', 2),
+('Christmas Eve', '2026-12-24', 'PROJECT', 2),
+('Christmas Day', '2026-12-25', 'PROJECT', 2);
 
 -- project holiday for dubai--
-INSERT INTO holiday_calendar (
+INSERT INTO holiday_calendar
+(
     holiday_name,
     holiday_date,
     type,
     project_id
 )
 VALUES
-('New Year''s Day', '2026-01-01', 'PROJECT_HOLIDAY', 3),
-('Eid Al Fitr Holiday 1', '2026-03-20', 'PROJECT_HOLIDAY', 3),
-('Eid Al Fitr Holiday 2', '2026-03-21', 'PROJECT_HOLIDAY', 3),
-('Eid Al Fitr Holiday 3', '2026-03-22', 'PROJECT_HOLIDAY', 3),
-('Arafat Day', '2026-05-26', 'PROJECT_HOLIDAY', 3),
-('Eid Al Adha Holiday 1', '2026-05-27', 'PROJECT_HOLIDAY', 3),
-('Eid Al Adha Holiday 2', '2026-05-28', 'PROJECT_HOLIDAY', 3),
-('Islamic New Year', '2026-06-16', 'PROJECT_HOLIDAY', 3),
-('Prophet Muhammad''s Birthday', '2026-08-25', 'PROJECT_HOLIDAY', 3),
-('UAE National Day', '2026-12-02', 'PROJECT_HOLIDAY', 3),
-('UAE National Day Holiday', '2026-12-03', 'PROJECT_HOLIDAY', 3);
+('New Year''s Day', '2026-01-01', 'PROJECT', 3),
+('Eid Al Fitr Holiday 1', '2026-03-20', 'PROJECT', 3),
+('Eid Al Fitr Holiday 2', '2026-03-21', 'PROJECT', 3),
+('Eid Al Fitr Holiday 3', '2026-03-22', 'PROJECT', 3),
+('Arafat Day', '2026-05-26', 'PROJECT', 3),
+('Eid Al Adha Holiday 1', '2026-05-27', 'PROJECT', 3),
+('Eid Al Adha Holiday 2', '2026-05-28', 'PROJECT', 3),
+('Islamic New Year', '2026-06-16', 'PROJECT', 3),
+('Prophet Muhammad''s Birthday', '2026-08-25', 'PROJECT', 3),
+('UAE National Day', '2026-12-02', 'PROJECT', 3),
+('UAE National Day Holiday', '2026-12-03', 'PROJECT', 3);
+
 DELETE FROM holiday_calendar
 WHERE id > 0;
 select * from holiday_calendar;
@@ -258,35 +265,21 @@ year
 
 VALUES
 
--- EMPLOYEE 6
 
-(6, 1, 12, 0, 12, 2026),
-(6, 2, 10, 0, 10, 2026),
-(6, 3, 20, 0, 20, 2026),
 
--- EMPLOYEE 7
-
-(7, 1, 12, 0, 12, 2026),
-(7, 2, 10, 0, 10, 2026),
-(7, 3, 20, 0, 20, 2026),
-
--- EMPLOYEE 8
-
-(8, 1, 12, 0, 12, 2026),
-(8, 2, 10, 0, 10, 2026),
-(8, 3, 20, 0, 20, 2026),
-
--- MANAGER 3
-
-(3, 1, 12, 2, 10, 2026),
-(3, 2, 10, 1, 9, 2026),
-(3, 3, 20, 5, 15, 2026),
-
--- MANAGER 4
+-- EMPLOYEE 1
 
 (4, 1, 12, 0, 12, 2026),
 (4, 2, 10, 0, 10, 2026),
 (4, 3, 20, 0, 20, 2026),
+
+
+
+-- MANAGER 1
+
+(3, 1, 12, 0, 12, 2026),
+(3, 2, 10, 0, 10, 2026),
+(3, 3, 20, 0, 20, 2026),
 
 -- HR
 
