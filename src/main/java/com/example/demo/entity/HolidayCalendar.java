@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import java.time.LocalDate;
 
+import com.example.demo.enums.HolidayType;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +27,8 @@ public class HolidayCalendar {
     @Column(name="holiday_date")
     private LocalDate holidayDate;
 
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private HolidayType type;
 
     @ManyToOne
     @JoinColumn(name="project_id")

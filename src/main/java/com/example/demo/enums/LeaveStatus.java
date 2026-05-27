@@ -2,8 +2,9 @@ package com.example.demo.enums;
 
 public enum LeaveStatus {
 
-    PENDING,
-    APPROVED,
-    REJECTED,
-    CANCELLED
+	    PENDING,
+	    MANAGER_APPROVED,
+	    HR_APPROVED,
+	    REJECTED,
+	    CANCELLED
 }

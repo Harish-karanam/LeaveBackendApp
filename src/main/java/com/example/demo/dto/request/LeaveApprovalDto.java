@@ -19,8 +19,7 @@ import lombok.Setter;
 
 public class LeaveApprovalDto {
 
-	@NotBlank(message = "status is required")
-    private String status;
+	
 
 	@Size(max=500, message = "manager comment cannot exceed 500 characters")
     private String managerComment;

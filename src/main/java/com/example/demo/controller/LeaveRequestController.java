@@ -45,13 +45,40 @@ public class LeaveRequestController {
         return leaveRequestService
                 .getLeavesByUserId(userId);
     }
+    
 
-    @PutMapping("/{leaveId}/approve")
-    public LeaveResponseDto approveLeave(
+    @PutMapping("/{leaveId}/manager-approve")
+
+    public LeaveResponseDto managerApproveLeave(
+
             @PathVariable Long leaveId,
-          @Valid  @RequestBody LeaveApprovalDto dto) {
+
+            @Valid
+            @RequestBody LeaveApprovalDto dto) {
 
         return leaveRequestService
-                .approveLeave(leaveId, dto);
+                .managerApproveLeave(leaveId, dto);
     }
+    
+    @PutMapping("/{leaveId}/hr-approve")
+
+    public LeaveResponseDto hrApproveLeave(
+
+            @PathVariable Long leaveId,
+
+            @Valid
+            @RequestBody LeaveApprovalDto dto) {
+
+        return leaveRequestService
+                .hrApproveLeave(leaveId, dto);
+    }
+
+//    @PutMapping("/{leaveId}/approve")
+//    public LeaveResponseDto approveLeave(
+//            @PathVariable Long leaveId,
+//          @Valid  @RequestBody LeaveApprovalDto dto) {
+//
+//        return leaveRequestService
+//                .approveLeave(leaveId, dto);
+//    }
 }

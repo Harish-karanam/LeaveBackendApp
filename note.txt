@@ -4,6 +4,8 @@ http://localhost:8080/swagger-ui/index.html
 OpenAPI Docs:
 http://localhost:8080/v3/api-docs
 
+audit only admin can access
+
 
 ROLES -->DEPT --> PROJECT --> LEAVE TYPE --->USER(REGISTER) -->LEAVEBALANCE -->HOLIDAYCALENDAR
 
@@ -95,6 +97,18 @@ CREATE EMPLOYEE
   "joiningDate": "2026-05-26"
 }
 
+{
+  "employeeCode": "EMP009",
+  "firstName": "Virat",
+  "lastName": "Employee",
+  "email": "virat@gmail.com",
+  "password": "Virat123",
+  "roleId": 4,
+  "managerId": 4,
+  "departmentId": 1,
+  "projectId": 2,
+  "joiningDate": "2026-05-26"
+}
 
 Database holidays 
 
@@ -227,3 +241,55 @@ SET type = 'PUBLIC_HOLIDAY'
 WHERE project_id = 1;
 
 select * from users;
+
+
+
+
+INSERT INTO leave_balance(
+
+user_id,
+leave_type_id,
+total_days,
+used_days,
+remaining_days,
+year
+
+)
+
+VALUES
+
+-- EMPLOYEE 6
+
+(6, 1, 12, 0, 12, 2026),
+(6, 2, 10, 0, 10, 2026),
+(6, 3, 20, 0, 20, 2026),
+
+-- EMPLOYEE 7
+
+(7, 1, 12, 0, 12, 2026),
+(7, 2, 10, 0, 10, 2026),
+(7, 3, 20, 0, 20, 2026),
+
+-- EMPLOYEE 8
+
+(8, 1, 12, 0, 12, 2026),
+(8, 2, 10, 0, 10, 2026),
+(8, 3, 20, 0, 20, 2026),
+
+-- MANAGER 3
+
+(3, 1, 12, 2, 10, 2026),
+(3, 2, 10, 1, 9, 2026),
+(3, 3, 20, 5, 15, 2026),
+
+-- MANAGER 4
+
+(4, 1, 12, 0, 12, 2026),
+(4, 2, 10, 0, 10, 2026),
+(4, 3, 20, 0, 20, 2026),
+
+-- HR
+
+(2, 1, 12, 0, 12, 2026),
+(2, 2, 10, 0, 10, 2026),
+(2, 3, 20, 0, 20, 2026);
